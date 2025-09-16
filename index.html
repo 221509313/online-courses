@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IUH Academy - Professional Certification Courses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7ff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.9), rgba(58, 12, 163, 0.9)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #ff4da6;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Courses Section */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--secondary);
+            font-size: 2.2rem;
+        }
+        
+        .courses {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .course-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .ms365 {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+        }
+        
+        .web-dev {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-content h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .course-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .course-content li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .course-content li i {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .tech-badge {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin: 0.2rem;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        /* Partners Section */
+        .partners {
+            background: var(--light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .partner-logos div {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            width: 170px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+        
+        .partner-logos div:hover {
+            transform: scale(1.05);
+        }
+        
+        .partner-logos img {
+            max-width: 100%;
+            max-height: 70px;
+        }
+        
+        .logo-placeholder {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.4rem;
+        }
+        
+        /* Application Form */
+        .application {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .form-container {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background: linear-gradient(to right, #4361ee, #3a0ca3);
+            color: white;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            max-width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-card .user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-card .user img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .course-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>IUH Academy</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#partners">Certification</a></li>
+                    <li><a href="#application">Apply</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Advance Your Career with Professional Certification</h1>
+            <p>We help you gain the knowledge and skills needed to pass certification exams from leading platforms like Microsoft, Alison, Coursera, and more.</p>
+            <a href="#application" class="btn">Apply for a Course Today</a>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <h2 class="section-title">Our Course Offerings</h2>
+            <div class="courses">
+                <div class="course-card">
+                    <div class="course-img ms365">Microsoft 365 Courses</div>
+                    <div class="course-content">
+                        <h3>Microsoft 365 Certification Courses</h3>
+                        <p>Master the Microsoft 365 ecosystem and prepare for official Microsoft certifications.</p>
+                        <p><strong>Technologies Covered:</strong></p>
+                        <div>
+                            <span class="tech-badge">Microsoft Excel</span>
+                            <span class="tech-badge">Microsoft PowerPoint</span>
+                            <span class="tech-badge">Microsoft Word</span>
+                            <span class="tech-badge">Office 365</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Advanced Excel Functions</li>
+                            <li><i class="fas fa-check-circle"></i> Professional Presentation Design</li>
+                            <li><i class="fas fa-check-circle"></i> Document Formatting & Automation</li>
+                            <li><i class="fas fa-check-circle"></i> Data Analysis & Visualization</li>
+                            <li><i class="fas fa-check-circle"></i> Office Integration Techniques</li>
+                        </ul>
+                        <a href="#application" class="btn">Apply for MS365 Courses</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-img web-dev">Web Development Courses</div>
+                    <div class="course-content">
+                        <h3>Web Development Courses</h3>
+                        <p>Learn modern web development technologies and prepare for industry-recognized certifications.</p>
+                        <p><strong>Technologies Covered:</strong></p>
+                        <div>
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge">CSS</span>
+                            <span class="tech-badge">Bootstrap 5</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">XAMPP</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Responsive Web Design</li>
+                            <li><i class="fas fa-check-circle"></i> Front-End Development</li>
+                            <li><i class="fas fa-check-circle"></i> Back-End Programming</li>
+                            <li><i class="fas fa-check-circle"></i> Database Integration</li>
+                            <li><i class="fas fa-check-circle"></i> Full-Stack Projects</li>
+                        </ul>
+                        <a href="#application" class="btn">Apply for Web Development</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partners" class="partners">
+        <div class="container">
+            <h2 class="section-title">Our Certification Partners</h2>
+            <p>We prepare you for certifications from these leading platforms</p>
+            <div class="partner-logos">
+                <div>
+                    <span class="logo-placeholder">Microsoft</span>
+                </div>
+                <div>
+                    <span class="logo-placeholder">Coursera</span>
+                </div>
+                <div>
+                    <span class="logo-placeholder">Alison</span>
+                </div>
+                <div>
+                    <span class="logo-placeholder">Google</span>
+                </div>
+                <div>
+                    <span class="logo-placeholder">AWS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="application" class="application">
+        <div class="container">
+            <h2 class="section-title">Course Application Form</h2>
+            <div class="form-container">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                     <input type="hidden" name="access_key" value="3315f2dc-08a9-4f8c-af3e-af7b6d654798">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="courseType">Select Course Type</label>
+                        <select id="courseType" name="courseType" required>
+                            <option value="">-- Please select --</option>
+                            <option value="ms365">Microsoft 365 Courses</option>
+                            <option value="webdev">Web Development Courses</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course">Select Specific Course</label>
+                        <select id="course" name="course" required>
+                            <option value="">-- Please select a course type first --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Previous Experience (if any)</label>
+                        <textarea id="experience" name="experience"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goals">Your Career Goals</label>
+                        <textarea id="goals" name="goals" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <p>"The MS365 course prepared me perfectly for the Microsoft certification exam. I passed on my first attempt and got promoted at work!"</p>
+                    <div class="user">
+                        <div class="user-info">
+                            <strong>Sarah Johnson</strong>
+                            <div>Microsoft Certified</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"After completing the web development course, I built a portfolio that helped me land my dream job as a full-stack developer."</p>
+                    <div class="user">
+                        <div class="user-info">
+                            <strong>Michael Chen</strong>
+                            <div>Web Developer</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"The instructors were amazing and the course material was exactly what I needed to prepare for my certification exams."</p>
+                    <div class="user">
+                        <div class="user-info">
+                            <strong>Jessica Williams</strong>
+                            <div>Cloud Specialist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>IUH Academy</h3>
+                    <p>Helping you gain knowledge and certification from leading platforms to advance your career.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Education Street, Knowledge City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@skillupacademy.com</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#courses">Our Courses</a></li>
+                        <li><a href="#partners">Certification Partners</a></li>
+                        <li><a href="#application">Apply Now</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 IUH Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Course options based on selection
+        document.getElementById('courseType').addEventListener('change', function() {
+            const courseSelect = document.getElementById('course');
+            courseSelect.innerHTML = '';
+            
+            if (this.value === 'MS365') {
+                const options = [
+                    {value: 'excel', text: 'Microsoft Excel Mastery'},
+                    {value: 'powerpoint', text: 'PowerPoint Professional'},
+                    {value: 'word', text: 'Advanced Word Processing'},
+                    {value: 'office-integration', text: 'Office 365 Integration'},
+                    {value: 'ms-cert-prep', text: 'Microsoft Certification Prep'}
+                ];
+                
+                options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.value;
+                    option.textContent = opt.text;
+                    courseSelect.appendChild(option);
+                });
+            } else if (this.value === 'webdev') {
+                const options = [
+                    {value: 'frontend', text: 'Front-End Development (HTML, CSS, JS)'},
+                    {value: 'bootstrap', text: 'Bootstrap 5 Framework'},
+                    {value: 'php-mysql', text: 'PHP & MySQL Development'},
+                    {value: 'js-frameworks', text: 'JavaScript Frameworks'},
+                    {value: 'fullstack', text: 'Full-Stack Web Development'}
+                ];
+                
+                options.forEach(opt => {
+                    const option = document.createElement('option');
+                    option.value = opt.value;
+                    option.textContent = opt.text;
+                    courseSelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement('option');
+                option.textContent = '-- Please select a course type first --';
+                courseSelect.appendChild(option);
+            }
+        });
+
+        // Form submission
+        document.getElementById('course-application').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your application! We will contact you shortly with more information.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
